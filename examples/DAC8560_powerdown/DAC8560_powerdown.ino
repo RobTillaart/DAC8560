@@ -34,10 +34,10 @@ void loop()
   }
 
   Serial.println("Stop DAC for 5 seconds");
-  mydac.setPowerDown(DAC8560_POWERDOWN_HIGH_IMP);
+  mydac.setPowerDownMode(DAC8560_POWERDOWN_HIGH_IMP);
   uint32_t start = millis();
   while (millis() - start < 5000);
-  mydac.setPowerDown(DAC8560_POWERDOWN_NORMAL);
+  mydac.setPowerDownMode(DAC8560_POWERDOWN_NORMAL);
 
   Serial.println("Continue sawtooth");
   for (uint16_t i = 32000; i < 64000; i+= 100)
@@ -46,10 +46,10 @@ void loop()
   }
 
   Serial.println("Stop DAC for 5 seconds");
-  mydac.setPowerDown(DAC8560_POWERDOWN_HIGH_IMP);
+  mydac.setPowerDownMode(DAC8560_POWERDOWN_HIGH_IMP);
   start = millis();
   while (millis() - start < 5000);
-  mydac.setPowerDown(DAC8560_POWERDOWN_NORMAL);
+  mydac.setPowerDownMode(DAC8560_POWERDOWN_NORMAL);
 }
 
 

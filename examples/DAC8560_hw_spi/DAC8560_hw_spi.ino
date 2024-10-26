@@ -9,7 +9,7 @@
 
 
 //  select, data, clock
-DAC8531 mydac(8, 11, 13);
+DAC8560 mydac(8, 11, 13);
 
 
 void setup()

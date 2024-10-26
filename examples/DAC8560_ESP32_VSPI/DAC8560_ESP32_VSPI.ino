@@ -10,7 +10,7 @@
 
 SPIClass * mySPI = new SPIClass(VSPI);  //  HSPI
 //  select, address HW SPI
-DAC8531 mydac(5, mySPI);
+DAC8560 mydac(5, mySPI);
 
 
 void setup()

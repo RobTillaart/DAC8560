@@ -98,16 +98,16 @@ unittest(test_powerDown)
   DAC8560 myDAC(4, 5, 6);
   myDAC.begin();
   
-  myDAC.setPowerDown(DAC8560_POWERDOWN_NORMAL);
+  myDAC.setPowerDownMode(DAC8560_POWERDOWN_NORMAL);
   assertEqual(DAC8560_POWERDOWN_NORMAL, myDAC.getPowerDownMode());
   
-  myDAC.setPowerDown(DAC8560_POWERDOWN_1K);
+  myDAC.setPowerDownMode(DAC8560_POWERDOWN_1K);
   assertEqual(DAC8560_POWERDOWN_1K, myDAC.getPowerDownMode());
   
-  myDAC.setPowerDown(DAC8560_POWERDOWN_100K);
+  myDAC.setPowerDownMode(DAC8560_POWERDOWN_100K);
   assertEqual(DAC8560_POWERDOWN_100K, myDAC.getPowerDownMode());
   
-  myDAC.setPowerDown(DAC8560_POWERDOWN_HIGH_IMP);
+  myDAC.setPowerDownMode(DAC8560_POWERDOWN_HIGH_IMP);
   assertEqual(DAC8560_POWERDOWN_HIGH_IMP, myDAC.getPowerDownMode());
 }
 

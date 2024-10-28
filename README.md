@@ -20,7 +20,7 @@ Arduino library for DAC8560 SPI Digital Analog Convertor (16 bit).
 
 The DAC8560 is a SPI based 16 bit DAC with one channel.
 
-This library is not tested yet.
+This library is not tested yet, so use with care.
 
 
 #### Related
@@ -73,6 +73,20 @@ check datasheet for details.
 | DAC8560_POWERDOWN_1K       |   1   |
 | DAC8560_POWERDOWN_100K     |   2   |
 | DAC8560_POWERDOWN_HIGH_IMP |   3   |
+
+
+### Internal Reference
+
+Not tested, experimental, use with care.
+
+The DAC8560 has an internal reference voltage of 2.5 volt.
+One can use this or use the an external **Vref**.
+
+Unknown if the voltage of the internal Vref can be measured 
+on the **Vref** pin.
+
+- **void enableInternalReference()** idem.
+- **void disableInternalReference()** idem.
 
 
 ## Future

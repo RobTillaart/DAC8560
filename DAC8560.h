@@ -50,6 +50,7 @@ public:
   uint8_t  getPowerDownMode();
 
   //       to be verified.
+  //       datasheet 7.3.5 Enable/Disable Internal Reference, P21
   void     enableInternalReference();
   void     disableInternalReference();
 
@@ -71,7 +72,7 @@ protected:
 
   uint32_t _SPIspeed = 16000000;
 
-  void     updateDevice(uint32_t data);
+  void     updateDevice(uint32_t data, bool vref = false);
   void     swSPI_transfer(uint8_t value);
 
   __SPI_CLASS__ * _mySPI;

@@ -90,14 +90,14 @@ uint8_t DAC8560::getPowerDownMode()
   return _register & 0x03;
 }
 
-
+//  datasheet 7.3.5 Enable/Disable Internal Reference, P21
 void DAC8560::enableInternalReference()
 {
   //  send MAGIC numbers
   uint32_t data = 0x004C0400;
-  updateDevice(data);
+  updateDevice(data, true);
   data = 0x00490401;
-  updateDevice(data);
+  updateDevice(data, true);
 }
 
 
@@ -105,7 +105,7 @@ void DAC8560::disableInternalReference()
 {
   //  send MAGIC numbers.
   uint32_t data = 0x00480401;
-  updateDevice(data);
+  updateDevice(data, true);
 }
 
 
@@ -120,7 +120,7 @@ void DAC8560::setSPIspeed(uint32_t speed)
 //
 //  PROTECTED
 //
-void DAC8560::updateDevice(uint32_t data)
+void DAC8560::updateDevice(uint32_t data, bool vref)
 {
   digitalWrite(_select, LOW);
   if (_hwSPI)
@@ -129,6 +129,8 @@ void DAC8560::updateDevice(uint32_t data)
     _mySPI->transfer((data >> 16) & 0xFF);
     _mySPI->transfer((data >> 8) & 0xFF);
     _mySPI->transfer(data & 0xFF);
+    //  datasheet 7.3.5 Enable/Disable Internal Reference, P21
+    if (vref) _mySPI->transfer(0x00);  // force extra clock pulses
     _mySPI->endTransaction();
   }
   else //  Software SPI
@@ -136,6 +138,8 @@ void DAC8560::updateDevice(uint32_t data)
     swSPI_transfer((data >> 16) & 0xFF);
     swSPI_transfer((data >> 8) & 0xFF);
     swSPI_transfer(data & 0xFF);
+    //  datasheet 7.3.5 Enable/Disable Internal Reference, P21
+    if (vref) swSPI_transfer(0x00);  // force extra clock pulses
   }
   digitalWrite(_select, HIGH);
 }
